@@ -1,0 +1,61 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../core-ajax/core-ajax.html">
+
+<!--
+Display the elasticsearch `/{index}/_status` endpoint.
+
+##### Example
+  <elasticsearch-index-status host="http://localhost:9200" index="twitter"></elasticsearch-index-status>
+
+@element elasticsearch-index-status
+@status alpha
+@homepage http://erikringsmuth.github.io/elasticsearch-index-status
+-->
+<polymer-element name="elasticsearch-index-status" attributes="host index response">
+  <template>
+    <link rel="stylesheet" href="elasticsearch-index-status.css" />
+    <core-ajax url="{{host}}/{{index}}/_status" auto?={{!response}} handleAs="json" response="{{response}}"></core-ajax>
+    <h2>{{index}}</h2>
+    <pre>{{displayStatus}}</pre>
+  </template>
+  <script>
+    Polymer('elasticsearch-index-status', {
+      /**
+       * The `host`
+       * 
+       * @attribute host
+       * @type string
+       * @default 'http://localhost:9200'
+       */
+      host: 'http://localhost:9200',
+
+      /**
+       * The `index`
+       * 
+       * @attribute index
+       * @type string
+       * @default '{index}'
+       */
+      index: '{index}',
+
+      /**
+       * Gets or sets the `response` data
+       * 
+       * @attribute response
+       * @type object
+       * @default undefined
+       */
+
+      displayStatus: '',
+
+      responseChanged: function(oldResponse, newResponse) {
+        // The status is nested in { "indices": { "index-name": statusObject } }
+        this.status = newResponse.indices[this.index];
+      },
+
+      statusChanged: function(oldStatus, newStatus) {
+        this.displayStatus = JSON.stringify(newStatus, null, 2);
+      }
+    });
+  </script>
+</polymer-element>

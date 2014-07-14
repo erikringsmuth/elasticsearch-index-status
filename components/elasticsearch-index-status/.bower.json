@@ -1,0 +1,33 @@
+{
+  "name": "elasticsearch-index-status",
+  "authors": [
+    "Erik Ringsmuth <erik.ringsmuth@gmail.com>"
+  ],
+  "description": "Display the elasticsearch /{index}/_status endpoint.",
+  "keywords": [
+    "elasticsearch",
+    "polymer",
+    "web-components"
+  ],
+  "main": "elasticsearch-index-status.html",
+  "license": "MIT",
+  "homepage": "https://github.com/erikringsmuth/elasticsearch-index-status",
+  "ignore": [
+    "**/.*"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer",
+    "platform": "Polymer/platform",
+    "core-ajax": "Polymer/core-ajax"
+  },
+  "_release": "fbc52a7713",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fbc52a7713e11b750e5ab454ccf90302535f1fc1"
+  },
+  "_source": "git://github.com/erikringsmuth/elasticsearch-index-status.git",
+  "_target": "master",
+  "_originalSource": "erikringsmuth/elasticsearch-index-status",
+  "_direct": true
+}

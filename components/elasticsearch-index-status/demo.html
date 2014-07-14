@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>elasticsearch-index-status Demo</title>
+  <script src="../platform/platform.js"></script>
+  <link rel="import" href="../polymer/polymer.html">
+  <link rel="import" href="elasticsearch-index-status.html">
+</head>
+<body unresolved>
+  <style>
+    body { font-family: sans-serif; }
+  </style>
+  <template id="demo" is="auto-binding">
+    <p>Example <code>elasticsearch-index-status</code> on host <input type="text" value="{{host}}"> and index <input type="text" value="{{index}}"></p>
+    <p>This will call <code>GET {{host}}/{{index}}/_status</code>.</p>
+    <h2>Custom element</h2>
+    <code>&lt;elasticsearch-index-status host="{{host}}" index="{{index}}"&gt;&lt;/elasticsearch-index-status&gt;</code>
+    <h2>Result</h2>
+    <elasticsearch-index-status host="{{host}}" index="{{index}}"></elasticsearch-index-status>
+  </template>
+  <script>
+    // set the default index
+    document.querySelector('#demo').index = 'twitter';
+  </script>
+</body>
+</html>
